@@ -8,8 +8,8 @@ def test_create_and_get_note():
     # Create note
     resp = client.post("/notes", json={"title": "Hello", "content": "World"})
     assert resp.status_code in (200, 201)
+
     note = resp.json()
-    # Basic response shape
     assert "id" in note
     assert note["title"] == "Hello"
     assert note["content"] == "World"
@@ -19,6 +19,7 @@ def test_create_and_get_note():
     note_id = note["id"]
     get_resp = client.get(f"/notes/{note_id}")
     assert get_resp.status_code == 200
+
     got = get_resp.json()
     assert got["id"] == note_id
     assert got["title"] == "Hello"
@@ -28,5 +29,6 @@ def test_create_and_get_note():
 def test_get_nonexistent_note():
     resp = client.get("/notes/999999")
     assert resp.status_code == 404
+
     body = resp.json()
     assert "detail" in body
