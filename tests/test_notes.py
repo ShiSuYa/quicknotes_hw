@@ -5,7 +5,6 @@ client = TestClient(app)
 
 
 def test_create_and_get_note():
-    # Create note
     resp = client.post("/notes", json={"title": "Hello", "content": "World"})
     assert resp.status_code in (200, 201)
 
@@ -15,7 +14,6 @@ def test_create_and_get_note():
     assert note["content"] == "World"
     assert "created_at" in note
 
-    # Get by id
     note_id = note["id"]
     get_resp = client.get(f"/notes/{note_id}")
     assert get_resp.status_code == 200
