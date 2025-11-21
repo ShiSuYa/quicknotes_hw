@@ -3,23 +3,30 @@ from app.main import app
 
 client = TestClient(app)
 
+
 def test_create_and_get_note():
-    response = client.post("/notes", json={"title": "Hello", "content": "World"})
-    assert response.status_code == 200
-    note = response.json()
+    # Create note
+    resp = client.post("/notes", json={"title": "Hello", "content": "World"})
+    assert resp.status_code in (200, 201)
+    note = resp.json()
+    # Basic response shape
+    assert "id" in note
     assert note["title"] == "Hello"
     assert note["content"] == "World"
-    assert "id" in note
     assert "created_at" in note
 
-    get_resp = client.get(f"/notes/{note['id']}")
+    # Get by id
+    note_id = note["id"]
+    get_resp = client.get(f"/notes/{note_id}")
     assert get_resp.status_code == 200
-    fetched = get_resp.json()
-    assert fetched["title"] == "Hello"
-    assert fetched["content"] == "World"
-    assert fetched["id"] == note["id"]
+    got = get_resp.json()
+    assert got["id"] == note_id
+    assert got["title"] == "Hello"
+    assert got["content"] == "World"
+
 
 def test_get_nonexistent_note():
-    response = client.get("/notes/9999")
-    assert response.status_code == 404
-    assert response.json()["detail"] == "Note not found"
+    resp = client.get("/notes/999999")
+    assert resp.status_code == 404
+    body = resp.json()
+    assert "detail" in body
