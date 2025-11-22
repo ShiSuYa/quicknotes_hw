@@ -1,6 +1,10 @@
 from datetime import datetime
 from pydantic import BaseModel, model_serializer
 
+class NoteCreate(BaseModel):
+    title: str
+    content: str
+
 class NoteResponse(BaseModel):
     id: int
     title: str
