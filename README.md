@@ -9,9 +9,9 @@
 quicknotes_hw/
 ├─ app/                # Основной код приложения
 ├─ tests/              # Тесты
-├─ allure-results/     # Результаты Allure тестов
 ├─ README.md           # Этот файл
-
+├─ pytest.ini          # Настройки pytest
+├─ requirements.txt    # Список зависимостей Python
 ````
 
 ## Установка
