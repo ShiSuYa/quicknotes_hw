@@ -15,21 +15,18 @@ quicknotes_hw/
 
 ## Установка
 
-Создание и активация виртуального окружения, установка зависимостей Python:
-
-```powershell
+```
+# Создание и активация виртуального окружения
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 pip install allure-pytest
-Allure для отчётов
-Установка Allure через Scoop:
 
-powershell
-Копировать код
+# Установка Allure через Scoop
 iwr -useb get.scoop.sh | iex
 scoop install allure
 $env:PATH += ";C:\Users\New\scoop\shims"
+```
 
 ## Запуск приложения
 
