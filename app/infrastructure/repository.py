@@ -1,22 +1,25 @@
-from typing import Dict, Optional
-from app.domain.models import Note
 from datetime import datetime
+from app.domain.models import NoteResponse
 
-class InMemoryNoteRepository:
-    def __init__(self):
-        self._data: Dict[int, Note] = {}
-        self._counter = 0
+class Note:
+    _id_counter = 1
 
-    def create(self, title: str, content: str) -> Note:
-        self._counter += 1
-        note = Note(
-            id=self._counter,
-            title=title,
-            content=content,
-            created_at=datetime.utcnow()
-        )
-        self._data[note.id] = note
-        return note
+    def __init__(self, title: str, content: str):
+        self.id = Note._id_counter
+        Note._id_counter += 1
+        self.title = title
+        self.content = content
+        self.created_at = datetime.utcnow()
 
-    def get(self, note_id: int) -> Optional[Note]:
-        return self._data.get(note_id)
+notes_db = []
+
+def add_note(title: str, content: str) -> Note:
+    note = Note(title, content)
+    notes_db.append(note)
+    return note
+
+def get_note(note_id: int) -> Note | None:
+    for note in notes_db:
+        if note.id == note_id:
+            return note
+    return None
