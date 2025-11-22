@@ -55,7 +55,7 @@ pytest --cov=app --cov-report=term-missing
 
 ```powershell
 
-" Запуск Allure отчёта:
+# Запуск Allure отчёта
 
 pytest --alluredir=allure-results
 allure serve allure-results
