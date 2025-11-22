@@ -7,6 +7,6 @@ class NoteResponse(BaseModel):
     content: str
     created_at: datetime
 
-    @model_serializer(mode="wrap")  # вместо "json"
+    @model_serializer(mode="wrap")
     def serialize_created_at(self, value: datetime) -> str:
         return value.isoformat()
