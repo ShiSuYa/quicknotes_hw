@@ -55,5 +55,3 @@ allure serve allure-results
 
 * В коде используется `datetime.utcnow()`, рекомендуется использовать timezone-aware объекты через `datetime.now(datetime.UTC)`.
 * Проект настроен для Python 3.13+ и Windows.
-
-```
