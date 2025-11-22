@@ -24,6 +24,7 @@ pip install -r requirements.txt
 pip install allure-pytest
 
 
+
 # Установка Allure через Scoop
 
 iwr -useb get.scoop.sh | iex
