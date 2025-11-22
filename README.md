@@ -1,0 +1,67 @@
+
+
+```markdown
+# QuickNotes HW
+
+Приложение для создания и получения заметок с использованием FastAPI и Pydantic.
+
+## Структура проекта
+
+```
+
+quicknotes_hw/
+├─ app/                # Основной код приложения
+├─ tests/              # Тесты
+├─ venv/               # Виртуальное окружение
+├─ allure-results/     # Результаты Allure тестов
+├─ README.md           # Этот файл
+
+````
+
+## Установка
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+pip install allure-pytest
+iwr -useb get.scoop.sh | iex
+scoop install allure
+$env:PATH += ";C:\Users\New\scoop\shims"
+````
+
+## Запуск приложения
+
+```powershell
+uvicorn app.main:app --reload
+```
+
+Перейдите в браузере по адресу: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Тестирование и покрытие
+
+```powershell
+pytest --cov=app --cov-report=term-missing
+```
+
+* 2 теста пройдены ✅
+* Покрытие кода: 100% по модулю `app` ✅
+
+## Allure отчёты
+
+```powershell
+pytest --alluredir=allure-results
+allure serve allure-results
+```
+
+После запуска откроется браузер с интерактивным отчётом.
+
+## Замечания
+
+* В коде используется `datetime.utcnow()`, рекомендуется использовать timezone-aware объекты через `datetime.now(datetime.UTC)`.
+* Проект настроен для Python 3.13+ и Windows.
+
+```
+
+Если хочешь, могу ещё добавить **короткую одностраничную версию для GitHub**, чтобы README выглядел максимально аккуратно и сразу показывал тесты и Allure.
+```
