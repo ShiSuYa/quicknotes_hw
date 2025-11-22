@@ -9,7 +9,6 @@
 quicknotes_hw/
 ├─ app/                # Основной код приложения
 ├─ tests/              # Тесты
-├─ venv/               # Виртуальное окружение
 ├─ allure-results/     # Результаты Allure тестов
 ├─ README.md           # Этот файл
 
