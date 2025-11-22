@@ -1,6 +1,3 @@
-
-
-```markdown
 # QuickNotes HW
 
 Приложение для создания и получения заметок с использованием FastAPI и Pydantic.
